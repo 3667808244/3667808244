@@ -1,5 +1,8 @@
 ## Hi there 👋
 
+I can use C++ or Pyhton to program.
+I often use AI tools like OpenCode
+
 🌱 I’m currently learning ...
 
 <!--
