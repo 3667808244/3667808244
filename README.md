@@ -1,9 +1,13 @@
 ## Hi there 👋
 
 I can use C++ or Pyhton to program.
+
 I often use AI tools like OpenCode
 
 🌱 I’m currently learning ...
+
+PyPOSF(Python) and egglzh_lib(Python) Pause development.
+You shouldn't use them to devlop anything
 
 <!--
 **3667808244/3667808244** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
