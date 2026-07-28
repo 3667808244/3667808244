@@ -6,9 +6,13 @@ I often use AI tools like OpenCode and ClaudeCode to devlop my project
 
 🌱 I’m currently learning ...
 
-PyPOSF(Python) and egglzh_lib(Python) Pause development.
+#### Notice:
+
+`PyPOSF`(Python) and `egglzh_lib`(Python) **Pause development**.
 It will not be further developed in the short term.
 You shouldn't use them to devlop anything.
+
+If your projects use `PyPOSF`, you should use `NeoPyPOSF` to replace `PyPOSF`.
 
 <!--
 **3667808244/3667808244** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
