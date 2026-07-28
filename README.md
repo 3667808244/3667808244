@@ -4,6 +4,8 @@ I can use C++ or Pyhton to program.
 
 I often use AI tools like OpenCode and ClaudeCode to devlop my project
 
+E-mail: 3667808244@qq.com
+
 🌱 I’m currently learning ...
 
 #### Notice:
@@ -14,6 +16,10 @@ You shouldn't use them to devlop anything.
 
 If your projects use `PyPOSF`, you should use `NeoPyPOSF` to replace `PyPOSF`.
 
+#### Links:
+
+[bilibili](https://space.bilibili.com/2054732546?spm_id_from=333.1007.0.0)
+[gitee](https://gitee.com/egglzh)
 <!--
 **3667808244/3667808244** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
