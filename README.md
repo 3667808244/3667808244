@@ -1,22 +1,16 @@
-## Hi there 👋
+# Hi there 👋
+
+English · [中文](README_ZH.md)
 
 I can use C++ or Pyhton to program.
 
-I often use AI tools like OpenCode and ClaudeCode to devlop my project
+I often use AI tools like OpenCode and Deepseek Harness to devlop my project
 
 E-mail: 3667808244@qq.com
 
 🌱 I’m currently learning ...
 
-#### Notice:
-
-`PyPOSF`(Python) and `egglzh_lib`(Python) **Pause development**.
-It will not be further developed in the short term.
-You shouldn't use them to devlop anything.
-
-If your projects use `PyPOSF`, you should use `NeoPyPOSF` to replace `PyPOSF`.
-
-#### Links:
+## Links:
 
 [bilibili](https://space.bilibili.com/2054732546?spm_id_from=333.1007.0.0)
 [gitee](https://gitee.com/egglzh)
