@@ -14,10 +14,15 @@ E-mail: 3667808244@qq.com
 🌱 I'm currently learning ...
 
 EazyMake is currently my largest project, implementing a simple C++ build tool.
-Its inspiration mainly comes from Arduino IDE (packages) and Cargo (CLI)
+Its inspiration mainly comes from Arduino IDE (packages) and Cargo (CLI),
+although the package structure has already become very different from Arduino IDE (it's actually a bit like Cargo)
 
 ## Links:
 
-[bilibili](https://space.bilibili.com/2054732546?spm_id_from=333.1007.0.0)  
-[gitee](https://gitee.com/egglzh)
-[EazyMake](https://github.ocm/3667808244/EazyMake)
+- [bilibili](https://space.bilibili.com/2054732546?spm_id_from=333.1007.0.0)  
+- [gitee](https://gitee.com/egglzh)
+- [EazyMake](https://github.ocm/3667808244/EazyMake)
+
+Gitee mirrors of some repositories:
+- [EazyMake](https://gitee/egglzh/EazyMake)
+- [ezmk-repo](https://gitee/egglzh/ezmk-repo)

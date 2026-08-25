@@ -13,11 +13,16 @@
 
 🌱 我目前正在学习……
 
-EazyMake目前是我最大的项目,实现了一个简单的C++构建工具
-灵感主要来自于Auduino IDE(包)和Cargo(CLI)
+EazyMake目前是我最大的项目,实现了一个简单的C++构建工具,
+灵感主要来自于Auduino IDE(包结构)和Cargo(CLI),
+虽然包结构已经和Auduino IDE的天差地别了(其实有点像Cargo)
 
 ## 链接：
 
-[bilibili](https://space.bilibili.com/2054732546?spm_id_from=333.1007.0.0)  
-[gitee](https://gitee.com/egglzh)
-[EazyMake](https://github.ocm/3667808244/EazyMake)
+- [B站主页](https://space.bilibili.com/2054732546?spm_id_from=333.1007.0.0)  
+- [gitee主页](https://gitee.com/egglzh)
+- [EazyMake](https://github.ocm/3667808244/EazyMake)
+
+部分仓库的Gitee镜像:
+- [EazyMake](https://gitee/egglzh/EazyMake)
+- [ezmk-repo](https://gitee/egglzh/ezmk-repo)
