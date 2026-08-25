@@ -2,29 +2,22 @@
 
 English · [中文](README_ZH.md)
 
-I can use C++ or Pyhton to program.
+I usually write C++ and Python.
 
-I often use AI tools like OpenCode and Deepseek Harness to devlop my project
+I often use AI tools like OpenCode and Deepseek Harness to assist development.
+(Although the EazyMake project has a CLAUDE.md, I no longer use Claude Code)
+
+I once learned Rust, but was discouraged by its ownership rules (probably because I write too much C++)
 
 E-mail: 3667808244@qq.com
 
-🌱 I’m currently learning ...
+🌱 I'm currently learning ...
+
+EazyMake is currently my largest project, implementing a simple C++ build tool.
+Its inspiration mainly comes from Arduino IDE (packages) and Cargo (CLI)
 
 ## Links:
 
-[bilibili](https://space.bilibili.com/2054732546?spm_id_from=333.1007.0.0)
+[bilibili](https://space.bilibili.com/2054732546?spm_id_from=333.1007.0.0)  
 [gitee](https://gitee.com/egglzh)
-<!--
-**3667808244/3667808244** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+[EazyMake](https://github.ocm/3667808244/EazyMake)
