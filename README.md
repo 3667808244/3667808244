@@ -17,7 +17,7 @@ EazyMake is currently my largest project, implementing a simple C++ build tool.
 Its inspiration mainly comes from Arduino IDE (packages) and Cargo (CLI),
 although the package structure has already become very different from Arduino IDE (it's actually a bit like Cargo)
 
-Due to some reasons, EazyMake's update frequency will drop significantly in the next 3~4 months.
+Due to some reasons, EazyMake's update frequency will drop significantly in the next 3~4 months (26/08 ~ 26/12).
 It may only fix bugs without adding new features, and the version number should stay at 1.4.x.
 
 ## Links:
