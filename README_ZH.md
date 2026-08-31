@@ -17,6 +17,9 @@ EazyMake目前是我最大的项目,实现了一个简单的C++构建工具,
 灵感主要来自于Auduino IDE(包结构)和Cargo(CLI),
 虽然包结构已经和Auduino IDE的天差地别了(其实有点像Cargo)
 
+应为一些原因,EazyMake在未来3~4个月内跟新频率应该会大幅下降
+可能只修bug不加新功能,版本号应该会稳定在1.4.x
+
 ## 链接：
 
 - [B站主页](https://space.bilibili.com/2054732546?spm_id_from=333.1007.0.0)  
