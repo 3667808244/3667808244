@@ -14,6 +14,7 @@
 邮箱：3667808244@qq.com
 
 🌱 我目前正在学习······
+(你说有没有可能我只是一个初三学生呢)
 
 EazyMake目前是我最大的项目,实现了一个简单的C++构建工具,
 灵感主要来自于Auduino IDE(包结构)和Cargo(CLI),
@@ -40,3 +41,17 @@ EazyMake目前是我最大的项目,实现了一个简单的C++构建工具,
 部分仓库的Gitee镜像:
 - [EazyMake](https://gitee.com/egglzh/EazyMake)
 - [ezmk-repo](https://gitee.com/egglzh/ezmk-repo)
+
+---
+
+## 关于EazyMake的一些说明
+
+### 为什么要写EazyMake
+
+c/cpp项目构建系统是必不可少的一部分,目前最主流的解决方案当然是CMake,
+但是CMake的SDL导致其相对来说是比较难以学习和使用。
+所以我写了EazyMake,致力于打造一个便于使用并且有一定工程价值的构建工具。
+
+### 为什么仓库选择基于git的去中心化仓库
+
+自然去中心化仓库有许多优点,但是对于我来说维护一个完全中心化的仓库的成本太高了。

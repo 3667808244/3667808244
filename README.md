@@ -14,6 +14,7 @@ I once learned Rust, but was discouraged by its ownership rules (probably becaus
 E-mail: 3667808244@qq.com
 
 🌱 I'm currently learning ...
+(Do you think it's possible that I'm just a ninth-grade student?)
 
 EazyMake is currently my largest project, implementing a simple C++ build tool.
 Its inspiration mainly comes from Arduino IDE (packages) and Cargo (CLI),
@@ -40,3 +41,17 @@ Of course, the above is just my personal adjustment. New code and any other form
 Gitee mirrors of some repositories:
 - [EazyMake](https://gitee.com/egglzh/EazyMake)
 - [ezmk-repo](https://gitee.com/egglzh/ezmk-repo)
+
+---
+
+## Some notes about EazyMake
+
+### Why I wrote EazyMake
+
+A build system is an indispensable part of c/cpp projects. The most mainstream solution at present is of course CMake,
+but CMake's DSL makes it relatively difficult to learn and use.
+So I wrote EazyMake, committed to building a build tool that is easy to use and has a certain engineering value.
+
+### Why the repository chooses a git-based decentralized repository
+
+Naturally, a decentralized repository has many advantages, but for me the cost of maintaining a fully centralized repository is too high.
