@@ -14,11 +14,12 @@ I once learned Rust, but was discouraged by its ownership rules (probably becaus
 E-mail: 3667808244@qq.com
 
 🌱 I'm currently learning ...
-(Do you think it's possible that I'm just a ninth-grade student?)
 
 EazyMake is currently my largest project, implementing a simple C++ build tool.
 Its inspiration mainly comes from Arduino IDE (packages) and Cargo (CLI),
 although the package structure has already become very different from Arduino IDE (it's actually a bit like Cargo).
+
+Some diary-like notes: [note.md](note.md)
 
 ---
 
@@ -54,4 +55,5 @@ So I wrote EazyMake, committed to building a build tool that is easy to use and 
 
 ### Why the repository chooses a git-based decentralized repository
 
-Naturally, a decentralized repository has many advantages, but for me the cost of maintaining a fully centralized repository is too high.
+Naturally, a decentralized repository has many advantages,
+but for me the main reason is that the cost of maintaining a fully centralized repository is too high.
