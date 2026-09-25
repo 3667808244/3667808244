@@ -1,7 +1,15 @@
+ezml api 草案
+
+[草案](codes/ezml.cpp)
+
+---
+
 目前除了EazyMake还有有这些方向
 
 1. 一个以Deepseek Harness为核心的LiveCD,大概是基于ArchLinux
 2. 一个基于SDL3的简单媒体库
+
+2026-9-25
 
 ---
 
