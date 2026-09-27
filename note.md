@@ -1,6 +1,8 @@
-ezml api 草案
+EzMediaLibrary api 草案
 
-[草案](codes/ezml.cpp)
+[codes/ezml.cpp](codes/ezml.cpp)
+
+2026-9-27
 
 ---
 
