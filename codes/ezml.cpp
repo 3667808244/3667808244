@@ -4,16 +4,16 @@
 #include <string_view>
 #include <variant>
 
-/* Ezml api 草案 v0.1.0
+/* Ezml api 草案 v0.1.1
  * 本文件仅为草案
  * 2026-9-25
  * */
 
 namespace ezml {
 	namespace types {
-		template<typename T>
+		template <typename T>
 		struct Vec2 {
-			T x, y;
+				T x, y;
 		};
 
 		using Vec2i = Vec2<std::int64_t>;
@@ -25,16 +25,16 @@ namespace ezml {
 		using WinSize = Vec2u;
 
 		struct Rect {
-			Pos2 pos;
-			Size2 size;
+				Pos2 pos;
+				Size2 size;
 		};
 
-	};
+	}  // namespace types
 
 	namespace surface {
 		class Surface {
-			/* 表示一个抽象的绘制目标
-			 * */
+				/* 表示一个抽象的绘制目标
+				 * */
 			public:
 				Surface(types::Size2 size);
 
@@ -44,83 +44,178 @@ namespace ezml {
 
 				// 其他绘制api...
 				// 例如矩形,三角形
-				
+
 				friend Surface load_file(const std::filesystem::path &path);
 		};
 
 		Surface load_file(const std::filesystem::path &path);
-		
-	};
+
+	}  // namespace surface
 
 	namespace keyboard {
-		enum class KeyboardKey {
-			A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z, // 字母
-			N0,N1,N2,N3,N4,N5,N6,N7,N8,N9, // 数字
-			F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12, // Fn
-			Esc,Tab,Caps,LCtrl,RCtrl,LAlt,RAlt,LShift,RShift,Enter, // 功能键
+		enum class Key {
+			// 字母
+			A,
+			B,
+			C,
+			D,
+			E,
+			F,
+			G,
+			H,
+			I,
+			J,
+			K,
+			L,
+			M,
+			N,
+			O,
+			P,
+			Q,
+			R,
+			S,
+			T,
+			U,
+			V,
+			W,
+			X,
+			Y,
+			Z,
+			// 数字
+			N0,
+			N1,
+			N2,
+			N3,
+			N4,
+			N5,
+			N6,
+			N7,
+			N8,
+			N9,
+			// Fn
+			F1,
+			F2,
+			F3,
+			F4,
+			F5,
+			F6,
+			F7,
+			F8,
+			F9,
+			F10,
+			F11,
+			F12,
+			// 主键盘功能键
+			Esc,
+			Tab,
+			Caps,
+			LeftCtrl,
+			RightCtrl,
+			LeftAlt,
+			RightAlt,
+			LeftShift,
+			RightShift,
+			Enter,
 			// 符号
-			ArrowUp,ArrowDown,ArrowLeft,ArrowRight, // 箭头按键
-		}; 
-		
-		bool is_key_pressed(KeyboardKey key);
-	}
+			SubtractOrUnderline,
+			AddOrEqual,
+			SemicolonOrColon,
+			CommaOrLessThan,
+			PeriodOrGreatThan,
+			SlashOrSeparator,
+			BackSlashOrQuestion,
+			LeftBraceOrSquare,
+			RightBraceOrSquareQuote,
+			BackQuoteOrTilde,
+			// 其他功能键
+			SystemRequest,
+			ScreenLock,
+			Pause,
+			Insert,
+			Delete,
+			Home,
+			End,
+			PageUp,
+			PageDown,
+			// 箭头按键
+			ArrowUp,
+			ArrowDown,
+			ArrowLeft,
+			ArrowRight,
+		};	// 暂不考虑小键盘
+
+		bool is_key_pressed(Key key);
+	}  // namespace keyboard
+
+	namespace mouse {
+		enum class Key { Left, Wheel, Right };
+
+		enum class WheelDirection { Vertical, Horizontal };
+	}  // namespace mouse
 
 	namespace event {
-		struct KeyboardPressedEvevt {
-			keyboard::KeyboardKey key;
-			bool shift, ctrl, alt, system;
-		};
-		
-		struct KeyboardReleasedEvevt {
-			keyboard::KeyboardKey key;
-		};
+		using NoEvent = std::monostate;	 // 表示事件队列已空
 
 		struct WindowCloseEvent {};
 
 		struct WindowResizeEvent {
-			types::Size2 size;
+				types::WinSize size;
 		};
 
-		enum class MouseKey {
-			Left, Wheel, Right
+		struct WindowFocusLostEvent {};
+
+		struct WindowFocusGainedEvent {};
+
+		struct KeyboardPressEvent {
+				keyboard::Key key;
+				bool shift, ctrl, alt, system;
 		};
 
-		struct MousePressedEvent {
-			types::Pos2 pos;
-			MouseKey Key;
+		struct KeyboardReleaseEvent {
+				keyboard::Key key;
+				bool shift, ctrl, alt, system;
 		};
 
-		struct MouseReleasedEvent {
-			types::Pos2 pos;
-			MouseKey key;
+		struct KeyboardTextEnteredEvent {
+				char32_t code;
 		};
 
-		// 其他事件结构体...
-		// 例如鼠标滚轮,窗口焦点
-		
-		using NoEvent =  std::monostate; // 表示事件队列已空
+		struct MousePressEvent {
+				types::Pos2 pos;
+				mouse::Key key;
+		};
 
-		using Event = std::variant<
-			NoEvent,
-			WindowCloseEvent,
-			WindowResizeEvent,
-			KeyboardPressedEvevt,
-			KeyboardReleasedEvevt,
-			MousePressedEvent,
-			MouseReleasedEvent
-		>;
-	};
+		struct MouseReleaseEvent {
+				types::Pos2 pos;
+				mouse::Key key;
+		};
+
+		struct MouseWheelScrolled {
+				types::Pos2 pos;
+				float delta;
+				mouse::WheelDirection direction;
+		};
+
+		struct MouseMoveEvent {
+				types::Pos2 pos;
+		};
+
+		using Event =
+			std::variant<NoEvent, WindowCloseEvent, WindowResizeEvent, WindowFocusLostEvent, WindowFocusGainedEvent,
+						 KeyboardPressEvent, KeyboardReleaseEvent, KeyboardTextEnteredEvent, MousePressEvent,
+						 MouseReleaseEvent, MouseWheelScrolled, MouseMoveEvent>;
+	}  // namespace event
 
 	namespace window {
-		
-		class Icon{
-			/* 表示一个窗口图标
-			 * */
+
+		class Icon {
+				/* 表示一个窗口图标
+				 * */
 		};
 
 		class Window {
-			/* 表示一个操作系统的窗口
-			 * */
+				/* 表示一个操作系统的窗口
+				 * */
 			public:
 				Window(std::string_view caption, types::WinSize size, const std::optional<Icon> &icon);
 
@@ -136,5 +231,5 @@ namespace ezml {
 
 				event::Event poll_event();
 		};
-	};
-};
+	}  // namespace window
+}  // namespace ezml
