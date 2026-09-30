@@ -1,15 +1,20 @@
 #include <cstdint>
+#include <expected>
 #include <filesystem>
 #include <optional>
 #include <string_view>
 #include <variant>
 
-/* Ezml api 草案 v0.1.1
+/* Ezml api 草案 v0.1.2
  * 本文件仅为草案
  * 2026-9-25
  * */
 
 namespace ezml {
+	enum class Error {
+		// 错误码定义
+	};
+
 	namespace types {
 		template <typename T>
 		struct Vec2 {
@@ -35,15 +40,18 @@ namespace ezml {
 		class Surface {
 				/* 表示一个抽象的绘制目标
 				 * */
-			public:
+			protected:
 				Surface(types::Size2 size);
 
+			public:
 				void draw_px(types::Pos2 pos);
 
 				void draw_line(types::Pos2 p1, types::Pos2 p2);
 
 				// 其他绘制api...
 				// 例如矩形,三角形
+
+				static std::expected<Surface, Error> create(types::Size2 size);
 
 				friend Surface load_file(const std::filesystem::path &path);
 		};
@@ -216,9 +224,10 @@ namespace ezml {
 		class Window {
 				/* 表示一个操作系统的窗口
 				 * */
-			public:
+			protected:
 				Window(std::string_view caption, types::WinSize size, const std::optional<Icon> &icon);
 
+			public:
 				surface::Surface &surface_ref();
 
 				void set_caption(std::string_view caption);
@@ -230,6 +239,9 @@ namespace ezml {
 				std::optional<types::Pos2> mouse_pos();
 
 				event::Event poll_event();
+
+				static std::expected<Window, Error> create(std::string_view caption, types::WinSize size,
+														   const std::optional<Icon> &icon);
 		};
 	}  // namespace window
 }  // namespace ezml

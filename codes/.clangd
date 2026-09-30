@@ -1,5 +1,5 @@
 CompileFlags:
   Compiler: D:/msys64/ucrt64/bin/g++.exe
   Add:
-    - -std=c++17
+    - -std=c++23
     - --target=x86_64-w64-windows-gnu
