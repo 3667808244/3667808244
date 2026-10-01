@@ -1,19 +1,25 @@
 #include <cstdint>
 #include <expected>
 #include <filesystem>
+#include <numbers>
 #include <optional>
 #include <string_view>
 #include <variant>
 
-/* Ezml api 草案 v0.1.2
+/* Ezml api 草案 v0.1.3
  * 本文件仅为草案
- * 2026-9-25
+ * 创建时间: 2026-9-25
+ * 修改时间: 2026-10-2
  * */
 
 namespace ezml {
-	enum class Error {
-		// 错误码定义
+	enum class Error {	// 错误码定义
+		FileNotFound,
+		//...
 	};
+
+	template <typename T>
+	using Result = std::expected<T, Error>;
 
 	namespace types {
 		template <typename T>
@@ -27,6 +33,7 @@ namespace ezml {
 
 		using Pos2 = Vec2f;
 		using Size2 = Vec2f;
+		using Offset2 = Vec2f;
 		using WinSize = Vec2u;
 
 		struct Rect {
@@ -34,7 +41,19 @@ namespace ezml {
 				Size2 size;
 		};
 
+		using Radius = float;
+
+		struct RgbaColor {
+				uint8_t r, g, b, a;
+		};
+
+		struct RgbColor {
+				uint8_t r, g, b;
+		};
+
 	}  // namespace types
+
+	types::Radius pi = std::numbers::pi_v<types::Radius>;
 
 	namespace surface {
 		class Surface {
@@ -44,19 +63,35 @@ namespace ezml {
 				Surface(types::Size2 size);
 
 			public:
-				void draw_px(types::Pos2 pos);
+				Surface(const Surface &w) = delete;
+				Surface operator=(const Surface &w) = delete;
 
-				void draw_line(types::Pos2 p1, types::Pos2 p2);
+				Surface(Surface &&w);
+				Surface operator=(Surface &&w);
+
+				void draw_px(types::Pos2 pos, types::RgbaColor color);
+
+				void draw_line(types::Pos2 p1, types::Pos2 p2, types::RgbaColor color, float width = 1.0f);
+
+				void draw_rect(types::Rect, types::RgbaColor color);
+
+				void draw_trangle(types::Pos2 p1, types::Pos2 p2, types::Pos2 p3, types::RgbaColor color);
+
+				void draw_arc(types::Rect bauding_box, types::RgbaColor color, types::Radius start = 0.0f,
+							  types::Radius end = pi * 2, float width = 1.0f);
+
+				void draw_pie(types::Rect bauding_box, types::RgbaColor color, types::Radius start = 0.0f,
+							  types::Radius end = pi * 2);
 
 				// 其他绘制api...
 				// 例如矩形,三角形
 
-				static std::expected<Surface, Error> create(types::Size2 size);
+				static Result<Surface> create(types::Size2 size);
 
-				friend Surface load_file(const std::filesystem::path &path);
+				friend Result<Surface> load_file(const std::filesystem::path &path);
 		};
 
-		Surface load_file(const std::filesystem::path &path);
+		Result<Surface> load_file(const std::filesystem::path &path);
 
 	}  // namespace surface
 
@@ -217,8 +252,15 @@ namespace ezml {
 	namespace window {
 
 		class Icon {
+			public:
+				enum class ScaleLevel {
+					/* 缩放尺寸
+					 * */
+				};
 				/* 表示一个窗口图标
 				 * */
+
+				Result<void> load_file(const std::filesystem::path &file, ScaleLevel level);
 		};
 
 		class Window {
@@ -228,6 +270,12 @@ namespace ezml {
 				Window(std::string_view caption, types::WinSize size, const std::optional<Icon> &icon);
 
 			public:
+				Window(const Window &w) = delete;
+				Window operator=(const Window &w) = delete;
+
+				Window(Window &&w);
+				Window operator=(Window &&w);
+
 				surface::Surface &surface_ref();
 
 				void set_caption(std::string_view caption);
@@ -240,8 +288,8 @@ namespace ezml {
 
 				event::Event poll_event();
 
-				static std::expected<Window, Error> create(std::string_view caption, types::WinSize size,
-														   const std::optional<Icon> &icon);
+				static Result<Window> create(std::string_view caption, types::WinSize size,
+											 const std::optional<Icon> &icon);
 		};
 	}  // namespace window
 }  // namespace ezml
