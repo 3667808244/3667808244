@@ -3,3 +3,4 @@ CompileFlags:
   Add:
     - -std=c++23
     - --target=x86_64-w64-windows-gnu
+    - -ID:/egglzh/3667808244/codes
