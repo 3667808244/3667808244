@@ -1,9 +1,7 @@
 #pragma once
 
-namespace ezml {
-	namespace mouse {
-		enum class Key { Left, Wheel, Right };
+namespace ezml::mouse {
+	enum class Key { Left, Middle, Right };
 
-		enum class WheelDirection { Vertical, Horizontal };
-	}  // namespace mouse
-}  // namespace ezml
+	enum class WheelDirection { Vertical, Horizontal };
+}  // namespace ezml::mouse

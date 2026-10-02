@@ -4,95 +4,94 @@
 #include <optional>
 #include <string_view>
 
+#include "ezml/error.hpp"
 #include "ezml/event.hpp"
 #include "ezml/keyboard.hpp"
 #include "ezml/mouse.hpp"
 #include "ezml/surface.hpp"
 #include "ezml/types.hpp"
 
-namespace ezml {
-	namespace window {
+namespace ezml::window {
 
-		class Icon {
-				/* 表示一个图标
-				 * */
-			protected:
-				Icon(const std::filesystem::path &file);
+	class Icon {
+			/* 表示一个图标
+			 * */
+		protected:
+			Icon(const std::filesystem::path &file);
 
-			public:
-				Icon(const Icon &w) = delete;
-				Icon operator=(const Icon &w) = delete;
+		public:
+			Icon(const Icon &icon) = delete;
+			Icon operator=(const Icon &icon) = delete;
 
-				Icon(Icon &&w);
-				Icon operator=(Icon &&w);
+			Icon(Icon &&icon);
+			Icon operator=(Icon &&icon);
 
-				static types::Result<void> load_file(const std::filesystem::path &file);
-		};
+			static error::Result<void> load_file(const std::filesystem::path &file);
+	};
 
-		class Window {
-				/* 表示一个操作系统的窗口
-				 * */
-			protected:
-				Window(std::string_view caption, types::WinSize size, const std::optional<Icon> &icon);
+	class Window {
+			/* 表示一个操作系统的窗口
+			 * */
+		protected:
+			Window(std::string_view caption, types::WinSize size, const std::optional<Icon> &icon);
 
-			public:
-				Window(const Window &w) = delete;
-				Window operator=(const Window &w) = delete;
+		public:
+			Window(const Window &window) = delete;
+			Window operator=(const Window &window) = delete;
 
-				Window(Window &&w);
-				Window operator=(Window &&w);
+			Window(Window &&window);
+			Window operator=(Window &&window);
 
-				surface::Surface &surface_ref();
+			surface::Surface &surface_ref();
 
-				// 窗口数据
+			// 窗口数据
 
-				void set_caption(std::string_view caption);
+			void set_caption(std::string_view caption);
 
-				void set_size(types::WinSize size);
+			void set_size(types::WinSize size);
 
-				void set_icon(const std::optional<Icon> &icon);
+			void set_icon(const std::optional<Icon> &icon);
 
-				// 键鼠
+			// 键鼠
 
-				std::optional<types::Pos2> mouse_pos();
+			std::optional<types::Pos2> mouse_pos();
 
-				bool is_key_pressed(keyboard::Key key);
+			bool is_key_pressed(keyboard::Key key);
 
-				bool is_key_pressed(mouse::Key key);
+			bool is_key_pressed(mouse::Key key);
 
-				void show_cursor();
+			void show_cursor();
 
-				void hide_cursor();
+			void hide_cursor();
 
-				void set_cursor(Icon &icon);
+			void set_cursor(Icon &icon);
 
-				// 窗口状态
+			// 窗口状态
 
-				void show();
+			void show();
 
-				void hide();
+			void hide();
 
-				void close();
+			void close();
 
-				void minimize();
+			void minimize();
 
-				void maximize();
+			void maximize();
 
-				void restore();
+			void restore();
 
-				void fullscreen();
+			void fullscreen();
 
-				// 绘制
+			// 绘制
 
-				// 将surface_ref返回的Surface引用的内容同步到窗口
-				void update();
+			// 将surface_ref返回的Surface引用的内容同步到窗口
+			void update();
 
-				// 事件
+			// 事件
 
-				event::Event poll_event();
+			event::Event poll_event();
 
-				static types::Result<Window> create(std::string_view caption, types::WinSize size,
-													const std::optional<Icon> &icon);
-		};
-	}  // namespace window
-}  // namespace ezml
+			static error::Result<Window> create(std::string_view caption, types::WinSize size,
+												const std::optional<Icon> &icon);
+	};
+}  // namespace ezml::window
