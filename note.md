@@ -1,3 +1,95 @@
+#  EzMediaLibrary api 预计的使用示例
+
+```cpp
+// demo.cpp —— ezml 最小用法示例（结构已通过 g++ -std=c++23 -Wall -Wextra -fsyntax-only）
+#include "ezml/ezml.hpp"
+
+#include <cstdint>
+#include <expected>
+#include <filesystem>
+#include <optional>
+#include <print>
+#include <type_traits>
+#include <variant>
+
+int main() {
+	using ezml::event::KeyboardPressEvent;
+	using ezml::event::MousePressEvent;
+	using ezml::event::NoEvent;
+	using ezml::event::WindowCloseRequestEvent;
+	using ezml::event::WindowResizeRequestEvent;
+	using ezml::surface::Surface;
+	using ezml::types::RgbaColor;
+	using ezml::types::WinSize;
+	using ezml::window::Window;
+
+	// ---- 1. 创建窗口: 返回 std::expected<std::unique_ptr<Window>, types::Error>
+	auto win = Window::create("ezml demo", WinSize{800, 600}, std::nullopt);
+	if (!win) {
+		std::println("create window failed, error = {}", static_cast<int>(win.error()));
+		return 1;
+	}
+	Window &window = **win;  // expected -> unique_ptr<Window> -> Window&
+
+	// ---- 2. 拿到窗口自带的绘制目标, 画点东西再同步上去
+	Surface &canvas = window.surface_ref();
+	const RgbaColor white{255, 255, 255, 255};
+	const RgbaColor red{220, 60, 60, 255};
+
+	canvas.draw_rect({{40.0f, 40.0f}, {240.0f, 160.0f}}, red);
+	canvas.draw_line({0.0f, 0.0f}, {800.0f, 600.0f}, white, 2.0f);
+	canvas.draw_arc({{520.0f, 380.0f}, {200.0f, 200.0f}}, white, 0.0f, ezml::pi / 2);
+	window.update();
+
+	window.set_caption("ezml demo");
+	window.show();
+
+	// ---- 3. 事件循环: poll_event() 返回 std::variant, 队列空时是 NoEvent
+	bool running = true;
+	while (running) {
+		std::visit(
+			[&](auto &&ev) {
+				using E = std::decay_t<decltype(ev)>;
+
+				if constexpr (std::is_same_v<E, NoEvent>) {
+					// 队列已空, 真实实现里在这里等下一帧
+				}
+				else if constexpr (std::is_same_v<E, WindowCloseRequestEvent>) {
+					running = false;
+				}
+				else if constexpr (std::is_same_v<E, WindowResizeRequestEvent>) {
+					std::println("resize -> {} x {}", ev.size.x, ev.size.y);
+				}
+				else if constexpr (std::is_same_v<E, KeyboardPressEvent>) {
+					if (ev.key == ezml::keyboard::Key::Esc) { running = false; }
+				}
+				else if constexpr (std::is_same_v<E, MousePressEvent>) {
+					if (ev.key == ezml::mouse::Key::Left) { canvas.draw_px(ev.pos, red); }
+					window.update();
+				}
+				else {
+					// MouseRelease / MouseMove / MouseWheelScrolled / 焦点事件...
+				}
+			},
+			window.poll_event());
+	}
+
+	window.close();
+
+	// ---- 4. 字体: load_file 收的是非 const 左值引用, 得先有具名 path 变量
+	std::filesystem::path font_path{"assets/ui.ttf"};
+	auto font = ezml::font::Font::load_file(font_path);
+	if (!font) {
+		std::println("load font failed, error = {}", static_cast<int>(font.error()));
+	}
+	return 0;
+}
+```
+
+2026-10-2
+
+---
+
 为什么TRPL的中文译本天天连不上啊
 
 2026-10-2
