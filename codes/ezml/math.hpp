@@ -4,6 +4,6 @@
 
 #include "ezml/types.hpp"
 
-namespace ezml {
+namespace ezml::math {
 	constexpr types::Radius pi = std::numbers::pi_v<types::Radius>;
-}  // namespace ezml
+}  // namespace ezml::math

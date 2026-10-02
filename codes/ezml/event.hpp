@@ -50,7 +50,7 @@ namespace ezml::event {
 
 	struct MouseLeftEvent {};
 
-	struct MouseWheelScrolled {
+	struct MouseWheelScrolledEvent {
 			types::Pos2 pos;
 			float delta;
 			mouse::WheelDirection direction;  // 在Windows下按shift再滚轮可能会变成横向
@@ -59,6 +59,9 @@ namespace ezml::event {
 	struct MouseMoveEvent {
 			types::Pos2 pos;
 	};
+
+	// 音频事件
+	struct MusicFinishedEvent {};
 
 	// clang-format off
 	using Event = std::variant<
@@ -77,8 +80,10 @@ namespace ezml::event {
 		MouseReleaseEvent,
 		MouseEnterEvent,
 		MouseLeftEvent,
-		MouseWheelScrolled,
-		MouseMoveEvent
+		MouseWheelScrolledEvent,
+		MouseMoveEvent,
+		// 音频事件
+		MusicFinishedEvent
 	>;
 	// clang-format on
 }  // namespace ezml::event

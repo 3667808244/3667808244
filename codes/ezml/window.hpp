@@ -24,23 +24,24 @@ namespace ezml::window {
 			Icon operator=(const Icon &icon) = delete;
 
 			Icon(Icon &&icon);
-			Icon operator=(Icon &&icon);
+			Icon &operator=(Icon &&icon);
 
-			static error::Result<void> load_file(const std::filesystem::path &file);
+			static error::Result<Icon> load_file(const std::filesystem::path &file);
 	};
 
 	class Window {
 			/* 表示一个操作系统的窗口
 			 * */
 		protected:
-			Window(std::string_view caption, types::WinSize size, const std::optional<Icon> &icon);
+			Window(std::string_view caption, types::WinSize size, const std::optional<Icon> &icon,
+				   types::RgbColor background = { 0, 0, 0 });
 
 		public:
 			Window(const Window &window) = delete;
 			Window operator=(const Window &window) = delete;
 
 			Window(Window &&window);
-			Window operator=(Window &&window);
+			Window &operator=(Window &&window);
 
 			surface::Surface &surface_ref();
 
@@ -52,19 +53,21 @@ namespace ezml::window {
 
 			void set_icon(const std::optional<Icon> &icon);
 
+			void set_background(types::RgbColor background = { 0, 0, 0 });
+
 			// 键鼠
 
 			std::optional<types::Pos2> mouse_pos();
 
 			bool is_key_pressed(keyboard::Key key);
 
-			bool is_key_pressed(mouse::Key key);
+			bool is_mouse_button_pressed(mouse::Key key);
 
 			void show_cursor();
 
 			void hide_cursor();
 
-			void set_cursor(Icon &icon);
+			void set_cursor(const Icon &icon);
 
 			// 窗口状态
 

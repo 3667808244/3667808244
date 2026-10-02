@@ -1,3 +1,11 @@
+#  EzMediaLibrary 音频 api 草案
+
+[codes/ezml/audio.hpp](codes/ezml/audio.hpp)
+[codes/ezml/music.hpp](codes/ezml/music.hpp)
+[codes/ezml/sound.hpp](codes/ezml/sound.hpp)
+
+---
+
 发现一些事情,
 我好像总是会把编程的想法带入到游戏中,然后因为太复杂然后放弃
 
