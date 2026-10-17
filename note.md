@@ -1,3 +1,9 @@
+666,怎么烂的运动会入场式还能拿个第一
+
+2026-10-17
+
+---
+
 最近在用EGE,写了一个模版
 
 [模版](https://github.com/3667808244/ezmk-project-template/tree/main/ege)
@@ -21,7 +27,7 @@
 
 ---
 
-#  EzMediaLibrary 音频 api 草案
+# EzMediaLibrary 音频 api 草案
 
 [codes/ezml/audio.hpp](codes/ezml/audio.hpp)
 [codes/ezml/music.hpp](codes/ezml/music.hpp)
@@ -59,7 +65,7 @@ Docker这类东西又不能裸机启动
 
 ---
 
-#  EzMediaLibrary api 预计的使用示例
+# EzMediaLibrary api 预计的使用示例
 
 ```cpp
 // demo.cpp —— ezml 最小用法示例（结构已通过 g++ -std=c++23 -Wall -Wextra -fsyntax-only）
@@ -180,6 +186,7 @@ int main() {
 
 其他内容查看[codes/.clang-format](codes/.clang-format),
 ai的概括:
+
 ```md
 - **缩进与行宽**
   - `UseTab: Always`，使用 Tab 缩进；`TabWidth: 4`、`IndentWidth: 4`
@@ -238,6 +245,7 @@ ai的概括:
   - C++11 花括号列表使用 Block 风格
   - 包含 Qt、Boost、KJ、absl 等宏和属性支持
 ```
+
 没有特别声明时的补全参考(Windows+MSYS2)[codes/.clangd](codes/.clangd)
 基本就是`isocpp23`
 
@@ -245,7 +253,7 @@ ai的概括:
 
 ---
 
-#  EzMediaLibrary api 草案
+# EzMediaLibrary api 草案
 
 [codes/ezml.cpp](codes/ezml.cpp)
 
