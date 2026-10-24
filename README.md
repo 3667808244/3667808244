@@ -27,9 +27,9 @@ Some diary-like notes: [note.md](note.md)
 
 Due to my academic workload, EazyMake's update frequency will drop significantly in the next 4~5 months (26/09 ~ 27/01).
 The update frequency may drop from once every two days to once a week.
-It may only fix bugs without adding new features, and the version number should stay at 1.4.x.
+It may only fix bugs without adding new features, and the version number should stay at ~~1.4.x~~ 1.5.x.
 
-Of course, the above is just my personal adjustment. New code and any other forms of contribution are welcome.
+Of course, the above is just my personal adjustment. Contributions of any form are welcome, including code, third-party repositories, and more.
 
 ---
 
@@ -40,6 +40,7 @@ Of course, the above is just my personal adjustment. New code and any other form
 - [EazyMake](https://github.ocm/3667808244/EazyMake)
 
 Gitee mirrors of some repositories:
+
 - [EazyMake](https://gitee.com/egglzh/EazyMake)
 - [ezmk-repo](https://gitee.com/egglzh/ezmk-repo)
 
