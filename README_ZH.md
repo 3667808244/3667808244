@@ -35,6 +35,10 @@ EazyMake目前是我最大的项目,实现了一个简单的C++构建工具,
 
 ---
 
+目前`EazyMake`正在积极维护,`ezmk-repo`,`term_pic`,`vt100_util`没有非常多的更新
+
+---
+
 ## 链接：
 
 - [B站主页](https://space.bilibili.com/2054732546)

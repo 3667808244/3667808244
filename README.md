@@ -34,11 +34,15 @@ Of course, the above is just my personal adjustment. Contributions of any form a
 
 ---
 
+`EazyMake` is currently under active maintenance, while `ezmk-repo`, `term_pic`, and `vt100_util` don't get very many updates.
+
+---
+
 ## Links:
 
 - [bilibili](https://space.bilibili.com/2054732546)
 - [gitee](https://gitee.com/egglzh)
-- [EazyMake](https://github.ocm/3667808244/EazyMake)
+- [EazyMake](https://github.com/3667808244/EazyMake)
 
 Gitee mirrors of some repositories:
 

@@ -1,5 +1,15 @@
 # 工具与环境
 
+我好像软件方面已经可以完全迁移到Linux上了
+
+编辑器Zed和VSCode都是跨平台的,dsh有npm就行了,
+浏览器是在不行就用FireFox,终端模拟器Wezterm挺不错的,
+媒体播放器VLC应该也是跨平台的\(不过Arch应该不好弄\),是在不行用ffmpeg转一下格式就行
+
+2026-10-24
+
+---
+
 试用了一下zed,感觉比VSCode好用,
 而且原生应用比VSCode的chormium套壳快多了,
 

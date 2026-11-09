@@ -6,3 +6,4 @@
 - [工具与环境](notes/02-tools.md)（4 条）
 - [校园与生活](notes/03-campus-life.md)（4 条）
 - [开发随想](notes/04-dev-thoughts.md)（3 条）
+- [长文本](notes/05-long-text.md) （1 条）
