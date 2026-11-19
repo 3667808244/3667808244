@@ -1,5 +1,11 @@
 # 项目与代码
 
+[机械动力:原子能](https://github.com/3667808244/create-atomic-energy)
+
+2026-11-14 16:46:54
+
+---
+
 我可能会新启一个纯VibeCoding的项目,
 是一个Minecraft 1.21.1 NeoForge的模组,
 考虑的内容是基于机械动力的核反应模组。
