@@ -62,3 +62,13 @@ So I wrote EazyMake, committed to building a build tool that is easy to use and 
 
 Naturally, a decentralized repository has many advantages,
 but for me the main reason is that the cost of maintaining a fully centralized repository is too high.
+
+---
+
+## License
+
+This repository uses split licensing:
+
+- Everything under [`codes/`](codes) is licensed under the [MIT License](codes/LICENSE).
+- All other content (documentation, notes, and other text) is licensed under
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — see [LICENSE](LICENSE).
