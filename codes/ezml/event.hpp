@@ -48,7 +48,7 @@ namespace ezml::event {
 
 	struct MouseEnterEvent {};
 
-	struct MouseLeftEvent {};
+	struct MouseLeaveEvent {};
 
 	struct MouseWheelScrolledEvent {
 			types::Pos2 pos;
@@ -65,21 +65,21 @@ namespace ezml::event {
 
 	// clang-format off
 	using Event = std::variant<
-		NoEvent, 
+		NoEvent,
 		// 窗口事件
-		WindowCloseRequestEvent, 
-		WindowResizeRequestEvent, 
+		WindowCloseRequestEvent,
+		WindowResizeRequestEvent,
 		WindowFocusLostEvent,
-		WindowFocusGainedEvent, 
+		WindowFocusGainedEvent,
 		// 键盘事件
-		KeyboardPressEvent, 
-		KeyboardReleaseEvent, 
+		KeyboardPressEvent,
+		KeyboardReleaseEvent,
 		KeyboardTextEnteredEvent,
 		// 鼠标事件
 		MousePressEvent,
 		MouseReleaseEvent,
 		MouseEnterEvent,
-		MouseLeftEvent,
+		MouseLeaveEvent,
 		MouseWheelScrolledEvent,
 		MouseMoveEvent,
 		// 音频事件

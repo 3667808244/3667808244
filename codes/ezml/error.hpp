@@ -16,10 +16,20 @@ namespace ezml::error {
 
 	std::string_view to_string_view(Error error);
 
-	template <typename T>
-	using Result = std::expected<std::unique_ptr<T>, Error>;
+	/* 返回值约定
+	 * - 有真实失败路径的操作返回 Result<T> 或 Status，失败时带回 Error
+	 * - 没有失败路径的操作返回 void，不为了形式统一而硬套 Status
+	 * - 库里的类型都是可移动的轻量句柄，默认按值返回，不必为了"避免拷贝"再套一层 unique_ptr
+	 * */
 
-	// 按值返回的结果，用于不依赖堆所有权的工厂
+	// 按值返回的结果：工厂与"产生新对象"的操作的默认形式
 	template <typename T>
-	using ValueResult = std::expected<T, Error>;
+	using Result = std::expected<T, Error>;
+
+	// 无值结果：只有成败、没有产物的操作(打开、播放)
+	using Status = std::expected<void, Error>;
+
+	// 堆结果：仅当调用点拿不到 T 的完整定义、或 T 大到不宜放进 expected 时才用
+	template <typename T>
+	using Boxed = std::expected<std::unique_ptr<T>, Error>;
 }  // namespace ezml::error

@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <cstddef>
+#include <cstdint>
 #include <filesystem>
 #include <memory>
 #include <span>
@@ -20,7 +21,7 @@ namespace ezml::audio {
 
 		public:
 			SoundBuffer(const SoundBuffer &buffer) = delete;
-			SoundBuffer operator=(const SoundBuffer &buffer) = delete;
+			SoundBuffer &operator=(const SoundBuffer &buffer) = delete;
 
 			SoundBuffer(SoundBuffer &&buffer);
 			SoundBuffer &operator=(SoundBuffer &&buffer);
@@ -39,9 +40,9 @@ namespace ezml::audio {
 			// 只能对右值调用：调用后本对象被移空
 			std::shared_ptr<const SoundBuffer> share() &&;
 
-			static error::ValueResult<SoundBuffer> load_file(const std::filesystem::path &path);
+			static error::Result<SoundBuffer> load_file(const std::filesystem::path &path);
 
-			static error::ValueResult<SoundBuffer> load_memory(std::span<const std::byte> data);
+			static error::Result<SoundBuffer> load_memory(std::span<const std::byte> data);
 	};
 
 	class Sound : public SoundSource {
@@ -53,14 +54,14 @@ namespace ezml::audio {
 
 		public:
 			Sound(const Sound &sound) = delete;
-			Sound operator=(const Sound &sound) = delete;
+			Sound &operator=(const Sound &sound) = delete;
 
 			Sound(Sound &&sound);
 			Sound &operator=(Sound &&sound);
 
 			// SoundSource 接口
 
-			void play() override;
+			error::Status play() override;
 			void pause() override;
 			void stop() override;
 
@@ -81,6 +82,6 @@ namespace ezml::audio {
 
 			PlaybackStatus status() const override;
 
-			static error::ValueResult<Sound> create(std::shared_ptr<const SoundBuffer> buffer);
+			static error::Result<Sound> create(std::shared_ptr<const SoundBuffer> buffer);
 	};
 }  // namespace ezml::audio

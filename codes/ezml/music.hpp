@@ -16,7 +16,7 @@ namespace ezml::audio {
 
 		public:
 			Music(const Music &music) = delete;
-			Music operator=(const Music &music) = delete;
+			Music &operator=(const Music &music) = delete;
 
 			Music(Music &&music);
 			Music &operator=(Music &&music);
@@ -24,11 +24,12 @@ namespace ezml::audio {
 			std::chrono::microseconds duration() const;
 
 			// 打开(或切换)音频文件，会重置播放状态
-			void open(const std::filesystem::path &path);
+			// 文件不存在或格式不支持时返回 Error
+			error::Status open(const std::filesystem::path &path);
 
 			// SoundSource 接口
 
-			void play() override;
+			error::Status play() override;
 			void pause() override;
 			void stop() override;
 
@@ -49,6 +50,6 @@ namespace ezml::audio {
 
 			PlaybackStatus status() const override;
 
-			static error::ValueResult<Music> load_file(const std::filesystem::path &path);
+			static error::Result<Music> load_file(const std::filesystem::path &path);
 	};
 }  // namespace ezml::audio

@@ -25,10 +25,10 @@ namespace ezml::types {
 	using Radius = float;
 
 	struct RgbaColor {
-			uint8_t r, g, b, a;
+			std::uint8_t r, g, b, a;
 	};
 
 	struct RgbColor {
-			uint8_t r, g, b;
+			std::uint8_t r, g, b;
 	};
 }  // namespace ezml::types

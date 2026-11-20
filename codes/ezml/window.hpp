@@ -17,16 +17,16 @@ namespace ezml::window {
 			/* 表示一个图标
 			 * */
 		protected:
-			Icon(const std::filesystem::path &file);
+			Icon(const std::filesystem::path &path);
 
 		public:
 			Icon(const Icon &icon) = delete;
-			Icon operator=(const Icon &icon) = delete;
+			Icon &operator=(const Icon &icon) = delete;
 
 			Icon(Icon &&icon);
 			Icon &operator=(Icon &&icon);
 
-			static error::Result<Icon> load_file(const std::filesystem::path &file);
+			static error::Result<Icon> load_file(const std::filesystem::path &path);
 	};
 
 	class Window {
@@ -38,7 +38,7 @@ namespace ezml::window {
 
 		public:
 			Window(const Window &window) = delete;
-			Window operator=(const Window &window) = delete;
+			Window &operator=(const Window &window) = delete;
 
 			Window(Window &&window);
 			Window &operator=(Window &&window);
@@ -95,6 +95,7 @@ namespace ezml::window {
 			event::Event poll_event();
 
 			static error::Result<Window> create(std::string_view caption, types::WinSize size,
-												const std::optional<Icon> &icon);
+												const std::optional<Icon> &icon,
+												types::RgbColor background = { 0, 0, 0 });
 	};
 }  // namespace ezml::window

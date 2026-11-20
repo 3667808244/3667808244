@@ -15,7 +15,7 @@ namespace ezml::surface {
 
 		public:
 			Surface(const Surface &w) = delete;
-			Surface operator=(const Surface &w) = delete;
+			Surface &operator=(const Surface &w) = delete;
 
 			Surface(Surface &&w);
 			Surface &operator=(Surface &&w);

@@ -68,13 +68,13 @@ int main() {
 	using ezml::types::WinSize;
 	using ezml::window::Window;
 
-	// ---- 1. 创建窗口: 返回 std::expected<std::unique_ptr<Window>, types::Error>
+	// ---- 1. 创建窗口: 返回 std::expected<Window, error::Error>
 	auto win = Window::create("ezml demo", WinSize{800, 600}, std::nullopt);
 	if (!win) {
 		std::println("create window failed, error = {}", static_cast<int>(win.error()));
 		return 1;
 	}
-	Window &window = **win;  // expected -> unique_ptr<Window> -> Window&
+	Window &window = *win;  // expected -> Window&
 
 	// ---- 2. 拿到窗口自带的绘制目标, 画点东西再同步上去
 	Surface &canvas = window.surface_ref();
@@ -83,7 +83,7 @@ int main() {
 
 	canvas.draw_rect({{40.0f, 40.0f}, {240.0f, 160.0f}}, red);
 	canvas.draw_line({0.0f, 0.0f}, {800.0f, 600.0f}, white, 2.0f);
-	canvas.draw_arc({{520.0f, 380.0f}, {200.0f, 200.0f}}, white, 0.0f, ezml::pi / 2);
+	canvas.draw_arc({{520.0f, 380.0f}, {200.0f, 200.0f}}, white, 0.0f, ezml::math::pi / 2);
 	window.update();
 
 	window.set_caption("ezml demo");
@@ -121,7 +121,7 @@ int main() {
 
 	window.close();
 
-	// ---- 4. 字体: load_file 收的是非 const 左值引用, 得先有具名 path 变量
+	// ---- 4. 字体: load_file 收的是 const 左值引用
 	std::filesystem::path font_path{"assets/ui.ttf"};
 	auto font = ezml::font::Font::load_file(font_path);
 	if (!font) {

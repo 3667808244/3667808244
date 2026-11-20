@@ -3,6 +3,8 @@
 #include <chrono>
 #include <cstdint>
 
+#include "ezml/error.hpp"
+
 namespace ezml::audio {
 	// 采样格式
 	enum class SampleFormat {
@@ -40,7 +42,7 @@ namespace ezml::audio {
 
 			// 播放控制
 
-			virtual void play() = 0;
+			virtual error::Status play() = 0;  // 可能因设备不可用而失败
 			virtual void pause() = 0;
 			virtual void stop() = 0;
 
